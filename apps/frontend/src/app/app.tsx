@@ -1,16 +1,21 @@
-import styled from 'styled-components';
+import { StyledApp } from './style';
+import {GlobalStyles} from '../global';
 
-import NxWelcome from './nx-welcome';
+import Header from '../components/header/Header';
 
-const StyledApp = styled.div`
-  // Your style here
-`;
+import { ThemeProvider } from 'styled-components';
+import { useTheme } from '../theme/useTheme';
 
 export function App() {
+  const {theme} = useTheme();
+
   return (
-    <StyledApp>
-      <NxWelcome title="frontend" />
-    </StyledApp>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <StyledApp>
+        <Header />
+      </StyledApp>
+    </ThemeProvider>
   );
 }
 
