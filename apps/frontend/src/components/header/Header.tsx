@@ -6,8 +6,6 @@ import {HeaderSwitch} from '../UI';
 import { StyleHeader__div } from './style';
 import { HeaderButton } from '../UI';
 
-
-
 export default function Header() {
   return (
     <StyleHeader>
@@ -17,7 +15,6 @@ export default function Header() {
         <HeaderButton />
         <HeaderSwitch />
       </StyleHeader__div>
-
     </StyleHeader>
   );
 }

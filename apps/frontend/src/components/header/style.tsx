@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { ITheme } from '../../theme/useTheme';
 
 export const StyleHeader = styled.header`
@@ -11,7 +11,7 @@ export const StyleHeader = styled.header`
   padding: 10px 32px;
 `;
 
-export const StyleHeader__logo = styled.a<{ theme: ITheme }>`
+export const StyleHeader__logo = styled.a`
   font-family: 'Playfair Display';
   font-weight: 700;
   font-size: 2rem;
