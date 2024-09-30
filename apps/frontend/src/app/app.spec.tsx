@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 import App from './app';
 
@@ -10,8 +11,9 @@ describe('App', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it('should have a greeting as the title', () => {
-    const { getByText } = render(<App />);
-    expect(getByText(/Welcome frontend/gi)).toBeTruthy();
+  it('should have a "Tasker" logo text', () => {
+    const { getByTestId } = render(<App />);
+
+    expect(getByTestId('header-logo-title')).toHaveTextContent('Tasker');
   });
 });

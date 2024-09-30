@@ -10,6 +10,8 @@
     "@nestjs/core": "^10.0.2",
     "@nestjs/mongoose": "^10.0.10",
     "@nestjs/platform-express": "^10.0.2",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.5.0",
     "axios": "^1.6.0",
     "date-fns": "^3.6.0",
     "mongoose": "^8.6.0",
