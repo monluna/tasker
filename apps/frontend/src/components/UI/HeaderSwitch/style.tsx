@@ -3,10 +3,6 @@ import { ITheme } from '../../../theme/useTheme';
 
 export const StyleHeader_switch = styled.button<{ theme: ITheme }>`
   width: 1.5rem;
-  /* height: 1.5rem; */
-  /* svg:hover {
-    fill: url('Gradient2');
-  } */
 
   #center,
   #mask-rays,

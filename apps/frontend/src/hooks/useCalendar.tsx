@@ -130,7 +130,6 @@ export const useCalendar = create<CalendarState>()((set) => ({
         state.firstDayOfMonth,
         true
       );
-      console.log(firstDayOfNextMonth);
       return {
         ...state,
         month: nextMonth,

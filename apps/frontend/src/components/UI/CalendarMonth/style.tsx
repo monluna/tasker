@@ -11,6 +11,13 @@ export interface Props_today {
 
 export const StyleCalendar = styled.div`
   width: 200px;
+  position: absolute;
+  margin-top: 15px;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 4px;
+  border: 2px solid ${({ theme }) => theme.colors.text};
+  border-radius: 10px;
 `;
 
 export const StyleCalendarMonth = styled.div`
@@ -30,7 +37,6 @@ export const StyleCalendar__img = styled.img`
 `;
 
 export const StyleCalendar_line = styled.hr`
-  /* margin: 1rem 0; */
   margin: 5px 0;
   border-top: 1px solid ${({ theme }) => theme.colors.text};
 `;
@@ -51,8 +57,7 @@ export const StyleCalendar_days = styled.div`
 `;
 
 export const StyleCalendar_day = styled.div<Props_col>`
-  grid-column-start: ${({colStart}) =>
-    colStart != 0 ? colStart : '7'};
+  grid-column-start: ${({ colStart }) => (colStart != 0 ? colStart : '7')};
 `;
 
 export const StyleDay = styled.button<Props_today>`
@@ -63,5 +68,5 @@ export const StyleDay = styled.button<Props_today>`
   width: 8px;
   padding: 10px;
   ${({ isToday }) => isToday && 'color: #fc5c7d;'}
-   ${({ isMonth }) => !isMonth && 'opacity: 60%;'}
+  ${({ isMonth }) => !isMonth && 'opacity: 60%;'}
 `;

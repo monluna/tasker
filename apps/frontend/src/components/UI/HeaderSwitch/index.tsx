@@ -3,19 +3,19 @@ import { StyleHeader_switch } from './style';
 import { useTheme } from '../../../theme/useTheme';
 
 export default function HeaderSwitch() {
-  const {theme, setTheme} = useTheme();
+  const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    setTheme(theme.name === "light" ? "dark" : "light");
+    setTheme(theme.name === 'light' ? 'dark' : 'light');
   };
 
   return (
-    <StyleHeader_switch onClick={toggleTheme} >
+    <StyleHeader_switch onClick={toggleTheme}>
       <svg id="sunmoon" viewBox="0 0 32 32">
         <defs>
           <linearGradient id="Gradient2">
-            <stop offset="0%" stop-color="#fc5c7d" />
-            <stop offset="100%" stop-color="#6a82fb" />
+            <stop offset="0%" stopColor="#fc5c7d" />
+            <stop offset="100%" stopColor="#6a82fb" />
           </linearGradient>
           <mask id="maskc">
             <rect x="0" y="0" width="32" height="32" fill="white" />
