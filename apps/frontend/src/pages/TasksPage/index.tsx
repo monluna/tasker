@@ -1,31 +1,31 @@
-import { CalendarWeek, GradientButton } from '../../components/UI';
-import { CalendarMonth } from '../../components/UI';
-import { TextDayTask } from '../../components/UI';
+import { CalendarBar } from './CalendarBar';
 
 import {
-  StyleTask_top,
-  StyleTask_topRitht,
-  StyleTask__img,
-  StyleTask_textButton,
+  StyleTask,
+  StyleTask_block,
+  StyleBlock_task,
+  Style_task,
 } from './style';
-import PlusIcon from '../../assets/icons/plus.svg';
 
 export function TasksPage() {
+  const time = [...Array(24).keys()].map(
+    (hr) => `${hr < 10 ? '0' + hr : hr}:00`
+  );
+
   return (
-    <>
-      <StyleTask_top>
-        <TextDayTask />
-        <StyleTask_topRitht>
-          <CalendarWeek />
-          <GradientButton>
-            <StyleTask_textButton>
-              Добавить
-              <StyleTask__img src={PlusIcon} alt="Plus" />
-            </StyleTask_textButton>
-          </GradientButton>
-        </StyleTask_topRitht>
-      </StyleTask_top>
-    </>
+    <StyleTask>
+      <CalendarBar />
+      <StyleTask_block>
+        <StyleBlock_task>
+          {time.map((hr) => (
+            <Style_task>{hr}</Style_task>
+          ))}
+        </StyleBlock_task>
+        <div>
+          
+        </div>
+      </StyleTask_block>
+    </StyleTask>
   );
 }
 

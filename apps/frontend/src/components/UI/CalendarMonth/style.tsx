@@ -7,6 +7,7 @@ export interface Props_col {
 export interface Props_today {
   isToday: boolean;
   isMonth: boolean;
+  isActiveDay: boolean;
 }
 
 export const StyleCalendar = styled.div`
@@ -18,6 +19,8 @@ export const StyleCalendar = styled.div`
   padding: 4px;
   border: 2px solid ${({ theme }) => theme.colors.text};
   border-radius: 10px;
+
+  background-color: ${({ theme }) => theme.colors.body};
 `;
 
 export const StyleCalendarMonth = styled.div`
@@ -64,9 +67,15 @@ export const StyleDay = styled.button<Props_today>`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 8px;
-  width: 8px;
+  height: 10px;
+  width: 10px;
   padding: 10px;
+  border-radius: 5px;
   ${({ isToday }) => isToday && 'color: #fc5c7d;'}
   ${({ isMonth }) => !isMonth && 'opacity: 60%;'}
+  ${({ isActiveDay }) => isActiveDay && 'box-shadow: 0 0 2px 2px rgb(252, 92, 125);'}
+
+  &:hover {
+    box-shadow: 0 0 2px 1px ${({ theme }) => theme.colors.text} inset;
+  }
 `;

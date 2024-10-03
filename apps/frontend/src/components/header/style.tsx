@@ -8,7 +8,7 @@ export const StyleHeader = styled.header`
 
   display: flex;
   justify-content: space-between;
-  padding: 10px 32px;
+  padding: 10px 0;
 `;
 
 export const StyleHeader__logo = styled.a`
