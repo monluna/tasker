@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { ITheme } from '../../theme/useTheme';
 
-export const StyleTask = styled.div`
+export const StyleTaskPage = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -38,8 +37,23 @@ export const StyleBlock_task = styled.div`
 
 export const Style_task = styled.div`
   font-size: 1.5rem;
-  width: 100%;
+  width: 20%;
   padding: 12px;
   box-shadow: 0 0 0 1px inset ${({ theme }) => theme.colors.text};
   background-color: rgb(125, 116, 109, 0.2);
+`;
+
+export const StyleSection_button = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+`;
+
+export const StyleButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 20px 0;
 `;

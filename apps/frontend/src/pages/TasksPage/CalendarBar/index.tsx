@@ -9,7 +9,7 @@ import { CalendarWeek, GradientButton } from '../../../components/UI';
 import { TextDayTask } from '../../../components/UI';
 import PlusIcon from '../../../assets/icons/plus.svg';
 
-export function CalendarBar() {
+export default function CalendarBar() {
   return (
     <StyleTask_top>
       <TextDayTask />

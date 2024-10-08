@@ -1,10 +1,13 @@
-import { CalendarBar } from './CalendarBar';
+import CalendarBar from './CalendarBar';
+import { GradientButton } from '../../components/UI';
 
 import {
-  StyleTask,
+  StyleTaskPage,
   StyleTask_block,
   StyleBlock_task,
   Style_task,
+  StyleSection_button,
+  StyleButtons
 } from './style';
 
 export function TasksPage() {
@@ -13,7 +16,7 @@ export function TasksPage() {
   );
 
   return (
-    <StyleTask>
+    <StyleTaskPage>
       <CalendarBar />
       <StyleTask_block>
         <StyleBlock_task>
@@ -21,11 +24,18 @@ export function TasksPage() {
             <Style_task>{hr}</Style_task>
           ))}
         </StyleBlock_task>
-        <div>
-          
-        </div>
+        <StyleSection_button>
+          <StyleButtons>
+            <GradientButton>Выполненные</GradientButton>
+            <GradientButton>Отложенные</GradientButton>
+          </StyleButtons>
+          <StyleButtons>
+            <GradientButton>Вчера</GradientButton>
+            <GradientButton>Завтра</GradientButton>
+          </StyleButtons>
+        </StyleSection_button>
       </StyleTask_block>
-    </StyleTask>
+    </StyleTaskPage>
   );
 }
 
