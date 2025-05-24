@@ -21,6 +21,11 @@ interface CalendarState {
   firstDayOfMonth: Date;
   getPreviousMonth: () => void;
   getNextMonth: () => void;
+  activeDay: Date;
+  getPreviousDay: () => void;
+  getNextDay: () => void;
+  setActiveDay: (day: Date) => void;
+  setActiveWeek: (day: Date) => void;
 }
 
 const today = startOfToday();
@@ -53,9 +58,7 @@ const calcualteNextMonth = (
 };
 
 export const useCalendar = create<CalendarState>()((set) => ({
-  today: (() => {
-    return startOfToday();
-  })(),
+  today: startOfToday(),
 
   firstDayOfWeek: (() => {
     const currWeek = format(today, 'MMM-dd-yyyy');
@@ -134,6 +137,52 @@ export const useCalendar = create<CalendarState>()((set) => ({
         ...state,
         month: nextMonth,
         firstDayOfMonth: firstDayOfNextMonth,
+      };
+    });
+  },
+
+  activeDay: startOfToday(),
+
+  setActiveDay: (day: Date) => {
+    return set((state) => {
+      return {
+        ...state,
+        activeDay: day,
+      };
+    });
+  },
+
+  getPreviousDay: () => {
+    return set((state) => {
+      const previousDay = add(state.activeDay, { days: -1 });
+      return {
+        ...state,
+        activeDay: previousDay,
+      };
+    });
+  },
+
+  getNextDay: () => {
+    return set((state) => {
+      const nextDay = add(state.activeDay, { days: 1 });
+      return {
+        ...state,
+        activeDay: nextDay,
+      };
+    });
+  },
+
+  setActiveWeek: (day: Date) => {
+    return set((state) => {
+      const firstDayOfWeek = startOfWeek(day, { weekStartsOn: 1 });
+      const daysInWeek = eachDayOfInterval({
+        start: firstDayOfWeek,
+        end: endOfWeek(firstDayOfWeek, { weekStartsOn: 1 }),
+      });
+      return {
+        ...state,
+        week: daysInWeek,
+        firstDayOfWeek: firstDayOfWeek,
       };
     });
   },

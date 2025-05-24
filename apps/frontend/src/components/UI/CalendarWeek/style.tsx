@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export interface Props {
   isToday: boolean;
+  isActiveDay: boolean;
 }
 
 export interface Props_button {
@@ -18,7 +19,15 @@ export const StyleCalendarWeek = styled.div`
 `;
 
 export const StyleCalendar_day = styled.button<Props>`
-  color: ${(props) => (props.isToday ? '#fc5c7d' : '')};
+  width: 120%;
+  height: 120%;
+  border-radius: 5px;
+  ${({ isToday }) => isToday && 'color: #fc5c7d;'}
+  ${({ isActiveDay }) => isActiveDay && 'box-shadow: 0 0 2px 2px rgb(252, 92, 125);'}
+
+  &:hover {
+    box-shadow: 0 0 2px 1px ${({ theme }) => theme.colors.text} inset;
+  }
 `;
 
 export const StyleCalendar_btn = styled.button`

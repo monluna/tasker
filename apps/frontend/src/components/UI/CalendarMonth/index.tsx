@@ -10,13 +10,14 @@ import {
   StyleDay,
 } from './style';
 
-import { isSameMonth } from 'date-fns';
+import { isSameMonth} from 'date-fns';
 
 import LeftIcon from '../../../assets/icons/left.svg';
 import RightIcon from '../../../assets/icons/right.svg';
 import { capitalizeFirstLetter } from '../../../helpers';
+import { forwardRef } from 'react';
 
-export default function CalendarMonth() {
+const CalendarMonth = forwardRef<HTMLDivElement>(({}, ref) => {
   const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
   const calendar = useCalendar();
   const calendarDay = calendar.firstDayOfMonth;
@@ -26,8 +27,18 @@ export default function CalendarMonth() {
   const calendarYear = calendarDay.getFullYear();
   const calendarIntervalDay = calendar.month;
 
+  const onDayClick = (day: Date) => {
+    !isSameMonth(day, calendar.firstDayOfMonth)
+      ? calendar.firstDayOfMonth < day
+        ? calendar.getNextMonth()
+        : calendar.getPreviousMonth()
+      : null;
+    calendar.setActiveDay(day);
+    calendar.setActiveWeek(day);
+  };
+
   return (
-    <StyleCalendar>
+    <StyleCalendar ref={ref}>
       <StyleCalendarMonth>
         <p>
           {capitalizeFirstLetter(calendarMonth)} {calendarYear}
@@ -53,6 +64,10 @@ export default function CalendarMonth() {
             <StyleDay
               isToday={day.toDateString() === calendar.today.toDateString()}
               isMonth={isSameMonth(day, calendar.firstDayOfMonth)}
+              isActiveDay={
+                day.toDateString() === calendar.activeDay.toDateString()
+              }
+              onClick={() => onDayClick(day)}
             >
               {day.getDate()}
             </StyleDay>
@@ -61,4 +76,6 @@ export default function CalendarMonth() {
       </StyleCalendar_days>
     </StyleCalendar>
   );
-}
+});
+
+export default CalendarMonth;

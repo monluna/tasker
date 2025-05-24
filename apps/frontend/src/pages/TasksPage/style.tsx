@@ -1,29 +1,75 @@
 import styled from 'styled-components';
-import { ITheme } from '../../theme/useTheme';
 
-export const StyleTask_top = styled.div`
+export const StyleTaskPage = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
-export const StyleTask_topRitht = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  height: 2rem;
+export const StyleTask_block = styled.div`
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  overflow: auto;
+  column-gap: 10px;
 `;
 
-export const StyleTask_textButton = styled.div`
+export const StyleBlock_task = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 0 40px 0;
+  padding: 0 10px;
+
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #d5d5d5;
+    border-radius: 10px;
+    border: 1px solid ${({ theme }) => theme.colors.text};
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgb(125, 116, 109, 0.2);
+    border-radius: 10px;
+  }
+  `;
+
+export const Style_task = styled.div`
+  font-size: 1.5rem;
+  width: 20%;
+  padding: 12px;
+  box-shadow: 0 0 0 1px inset ${({ theme }) => theme.colors.text};
+  background-color: rgb(125, 116, 109, 0.2);
 `;
 
-export const StyleTask__img = styled.img<{ theme: ITheme }>`
-  width: 1.5rem;
-  filter: ${({ theme }) =>
-    theme.name === 'light' ? 'brightness(100%)' : theme.colors.svg_color};
+export const StyleSection_button = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+`;
+
+export const StyleButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 20px 0;
+`;
+export const StyleIcons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 0;
+`;
+
+export const StyleCalendar__img = styled.img`
+  width: 2rem;
+  filter: ${({ theme }) => theme.colors.svg_color};
+  transition: filter 275ms ease-out, transform 0.2s ease;
+
+  &:hover {
+    filter: none;
+  }
 `;
